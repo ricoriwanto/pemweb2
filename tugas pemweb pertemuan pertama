@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Nilai Siswa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-bold mb-4 text-center">Daftar Nilai Siswa</h3>
+        <table class="w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-300">
+                    <th class="border border-gray-500 px-5 py-2">No</th>
+                    <th class="border border-gray-500 px-5 py-2">NIM</th>
+                    <th class="border border-gray-500 px-5 py-2">UTS</th>
+                    <th class="border border-gray-500 px-5 py-2">UAS</th>
+                    <th class="border border-gray-500 px-5 py-2">Tugas</th>
+                    <th class="border border-gray-500 px-5 py-2">Nilai Akhir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $ns1 = ['id'=>1,'nim'=>'01101','uts'=>80,'uas'=>84,'tugas'=>78];
+                $ns2 = ['id'=>2,'nim'=>'01121','uts'=>70,'uas'=>50,'tugas'=>68];
+                $ns3 = ['id'=>3,'nim'=>'01130','uts'=>60,'uas'=>86,'tugas'=>70];
+                $ns4 = ['id'=>4,'nim'=>'01134','uts'=>90,'uas'=>91,'tugas'=>82];
+                
+                $ar_nilai = [$ns1, $ns2 , $ns3, $ns4];
+                
+                $nomor = 1;
+                foreach($ar_nilai as $ns){
+                    echo '<tr class="text-center">';
+                    echo '<td class="border border-gray-300 px-4 py-2">'.$nomor.'</td>';
+                    echo '<td class="border border-gray-300 px-4 py-2">'.$ns['nim'].'</td>';
+                    echo '<td class="border border-gray-300 px-4 py-2">'.$ns['uts'].'</td>';
+                    echo '<td class="border border-gray-300 px-4 py-2">'.$ns['uas'].'</td>';
+                    echo '<td class="border border-gray-300 px-4 py-2">'.$ns['tugas'].'</td>';
+                    $nilai_akhir = ($ns['uts'] + $ns['uas']+$ns['tugas'])/3;
+                    echo '<td class="border border-gray-300 px-4 py-2">'.number_format($nilai_akhir,2,',','.').'</td>';
+                    echo '</tr>';
+                    $nomor++;
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
